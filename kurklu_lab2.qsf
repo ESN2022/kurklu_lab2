@@ -50,7 +50,32 @@ set_global_assignment -name QSYS_FILE kurklu_lab2_sys.qsys
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name VHDL_FILE kurklu_lab2.vhd
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_location_assignment PIN_C14 -to segment1[0]
+set_location_assignment PIN_E15 -to segment1[1]
+set_location_assignment PIN_C15 -to segment1[2]
+set_location_assignment PIN_C16 -to segment1[3]
+set_location_assignment PIN_E16 -to segment1[4]
+set_location_assignment PIN_D17 -to segment1[5]
+set_location_assignment PIN_C17 -to segment1[6]
+set_location_assignment PIN_C18 -to segment2[0]
+set_location_assignment PIN_D18 -to segment2[1]
+set_location_assignment PIN_E18 -to segment2[2]
+set_location_assignment PIN_B16 -to segment2[3]
+set_location_assignment PIN_A17 -to segment2[4]
+set_location_assignment PIN_A18 -to segment2[5]
+set_location_assignment PIN_B17 -to segment2[6]
+set_location_assignment PIN_B20 -to segment3[0]
+set_location_assignment PIN_A20 -to segment3[1]
+set_location_assignment PIN_B19 -to segment3[2]
+set_location_assignment PIN_A21 -to segment3[3]
+set_location_assignment PIN_B21 -to segment3[4]
+set_location_assignment PIN_C22 -to segment3[5]
+set_location_assignment PIN_B22 -to segment3[6]
+
+set_location_assignment PIN_P11 -to clk
+set_location_assignment PIN_P20 -to reset_n
+
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
