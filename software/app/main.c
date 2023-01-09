@@ -8,21 +8,37 @@
 
 //Fonction qui affiche sur un 7 seg
 void aff_segment(int addr,int nbr);
-
+void int_to_seg(int nbr);
 
 int main(){
 	
 	int i =0;
 	while(1){
-		for(i=0;i<10;i++){
-			aff_segment(SEG1_BASE,i);
-			usleep(400000);
+		for(i=0;i<999;i++){
+			int_to_seg(i);
+			usleep(100000);
 		}
 		i = 0;
 	}
 }
 
+//Fonction qui prend un entier et affiche l'affiche sur les 3 7 seg
+void int_to_seg(int nbr){
+	int i =0;
+	int tab[3] = {0,0,0};
+	
+	while (nbr >= 10) {
+		tab[i] = nbr % 10;
+		nbr = nbr / 10;
+		i = i+1;
+	}
+	tab[i] = nbr;
+	
+	aff_segment(SEG1_BASE,tab[0]);
+	aff_segment(SEG2_BASE,tab[1]);
+	aff_segment(SEG3_BASE,tab[2]);
 
+}
 
 void aff_segment(int addr,int nbr){
 	//On vien ecrire sur le 7seg en fonction du nbr
@@ -68,7 +84,7 @@ void aff_segment(int addr,int nbr){
 			IOWR_ALTERA_AVALON_PIO_DATA(addr,0b0010000);
 			break;
 		default:
-			IOWR_ALTERA_AVALON_PIO_DATA(addr,0b1111111);
+			IOWR_ALTERA_AVALON_PIO_DATA(addr,0b1000000);
 			break;
 	}
 }
