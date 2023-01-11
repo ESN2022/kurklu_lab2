@@ -41,6 +41,38 @@
          type = "String";
       }
    }
+   element SEG2
+   {
+      datum _sortIndex
+      {
+         value = "5";
+         type = "int";
+      }
+   }
+   element SEG2.s1
+   {
+      datum baseAddress
+      {
+         value = "135184";
+         type = "String";
+      }
+   }
+   element SEG3
+   {
+      datum _sortIndex
+      {
+         value = "6";
+         type = "int";
+      }
+   }
+   element SEG3.s1
+   {
+      datum baseAddress
+      {
+         value = "135168";
+         type = "String";
+      }
+   }
    element clk_0
    {
       datum _sortIndex
@@ -109,6 +141,16 @@
    internal="SEG1.external_connection"
    type="conduit"
    dir="end" />
+ <interface
+   name="seg2_external_connection"
+   internal="SEG2.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="seg3_external_connection"
+   internal="SEG3.external_connection"
+   type="conduit"
+   dir="end" />
  <module
    name="RAM0"
    kind="altera_avalon_onchip_memory2"
@@ -142,6 +184,34 @@
   <parameter name="writable" value="true" />
  </module>
  <module name="SEG1" kind="altera_avalon_pio" version="18.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="4" />
+ </module>
+ <module name="SEG2" kind="altera_avalon_pio" version="18.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="4" />
+ </module>
+ <module name="SEG3" kind="altera_avalon_pio" version="18.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="false" />
@@ -204,7 +274,7 @@
   <parameter name="dataAddrWidth" value="18" />
   <parameter name="dataMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="dataMasterHighPerformanceMapParam" value="" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='RAM0.s1' start='0x10000' end='0x1A000' type='altera_avalon_onchip_memory2.s1' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x20800' end='0x21000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='SEG1.s1' start='0x21020' end='0x21030' type='altera_avalon_pio.s1' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x21030' end='0x21038' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='RAM0.s1' start='0x10000' end='0x1A000' type='altera_avalon_onchip_memory2.s1' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x20800' end='0x21000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='SEG3.s1' start='0x21000' end='0x21010' type='altera_avalon_pio.s1' /><slave name='SEG2.s1' start='0x21010' end='0x21020' type='altera_avalon_pio.s1' /><slave name='SEG1.s1' start='0x21020' end='0x21030' type='altera_avalon_pio.s1' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x21030' end='0x21038' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
   <parameter name="data_master_high_performance_paddr_base" value="0" />
   <parameter name="data_master_high_performance_paddr_size" value="0" />
   <parameter name="data_master_paddr_base" value="0" />
@@ -401,6 +471,24 @@
  <connection
    kind="avalon"
    version="18.1"
+   start="nios2_gen2_0.data_master"
+   end="SEG2.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00021010" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2_0.data_master"
+   end="SEG3.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00021000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
    start="nios2_gen2_0.instruction_master"
    end="nios2_gen2_0.debug_mem_slave">
   <parameter name="arbitrationPriority" value="1" />
@@ -419,6 +507,8 @@
  <connection kind="clock" version="18.1" start="clk_0.clk" end="nios2_gen2_0.clk" />
  <connection kind="clock" version="18.1" start="clk_0.clk" end="jtag_uart_0.clk" />
  <connection kind="clock" version="18.1" start="clk_0.clk" end="SEG1.clk" />
+ <connection kind="clock" version="18.1" start="clk_0.clk" end="SEG2.clk" />
+ <connection kind="clock" version="18.1" start="clk_0.clk" end="SEG3.clk" />
  <connection kind="clock" version="18.1" start="clk_0.clk" end="RAM0.clk1" />
  <connection
    kind="interrupt"
@@ -438,6 +528,8 @@
    start="clk_0.clk_reset"
    end="jtag_uart_0.reset" />
  <connection kind="reset" version="18.1" start="clk_0.clk_reset" end="SEG1.reset" />
+ <connection kind="reset" version="18.1" start="clk_0.clk_reset" end="SEG2.reset" />
+ <connection kind="reset" version="18.1" start="clk_0.clk_reset" end="SEG3.reset" />
  <connection kind="reset" version="18.1" start="clk_0.clk_reset" end="RAM0.reset1" />
  <connection
    kind="reset"
@@ -449,6 +541,16 @@
    version="18.1"
    start="nios2_gen2_0.debug_reset_request"
    end="SEG1.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="nios2_gen2_0.debug_reset_request"
+   end="SEG2.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="nios2_gen2_0.debug_reset_request"
+   end="SEG3.reset" />
  <connection
    kind="reset"
    version="18.1"
