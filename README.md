@@ -2,7 +2,7 @@
 
 
 # Introduction
-Dans le cadre de notre cours de conception conjointe en GE5A a Polyteh Clermont, nous sommes amenées à mettre en pratique les connaissances théoriques acquises lors de TP. Ces travaux sont réalisés sur une carte Terasic DE10 - Lite basé sur un FPGA Altera MAX 10. Pour ce deuxième projet notre objectif et d'implémenter un compteur sur trois 7 segment. Le compteur devra afficher une nouvelle valeur toute les 1s, cela doit etre réaliser en utilisant une interruption sur un timer.
+Dans le cadre de notre cours de conception conjointe en GE5A a Polyteh Clermont, nous sommes amenées à mettre en pratique les connaissances théoriques acquises lors de TP. Ces travaux sont réalisés sur une carte Terasic DE10 - Lite basé sur un FPGA Altera MAX 10. Pour ce deuxième projet notre objectif et d'implémenter un compteur sur trois 7 segments. Le compteur devra afficher une nouvelle valeur toutes les 1s, cela doit être réaliser en utilisant une interruption sur un timer.
 
 
 # Architecture
@@ -29,21 +29,21 @@ Voici le système initialiser sur qsys :
 
 # Avancement
 
-J'ai d'abord ecrit le fichier bin_to_7seg.vhd afin de realiser le traduction d'un chiffre en 7 segment. Pour la traduction j'ai simplement realiser une table de verité avec des when - else.
+J'ai d'abord écrits le fichier bin_to_7seg.vhd afin de réaliser la traduction d'un chiffre en 7 segments. Pour la traduction, j'ai simplement réalisé une table de vérité avec des when - else.
 
 ## Compteur polling
-J'ai ensuite réaliser les differentes étapes afin de pouvoir compiler mon system sur quartus (creation vhd, componenents ,pin assignement ..). Sur la partie software j'ai ecrit une simple boucle for afin de pouvoir afficher les chiffres de 0 a 9 en polling sur un segment. Cette étape validé j'ai fait 3 boucle for imbriquer afin de réaliser l'affichage sur les 3 7segments. Le code se trouve dans le fichier polling.c.
+J'ai ensuite réalisé les différentes étapes afin de pouvoir compiler mon system sur quartus (création vhd, components ,pin assignements ..). Sur la partie software, j'ai écrit une simple boucle for afin de pouvoir afficher les chiffres de 0 à 9 en polling sur un segment. Cette étape validée, j'ai fait 3 boucles for imbriquer afin de réaliser l'affichage sur les 3 7 segments. Le code se trouve dans le fichier polling.c.
 
 https://user-images.githubusercontent.com/24780090/211843099-4f6160b2-aeac-4aea-9bee-a2d28c4c9b7c.mov
 
 
 ## Compteur timer
-Dans cetter partie j'ai ajouté un timer dans mon design qsys que j'ai regler avec une période de 1s. J'ai d'abord test uniquement si l'interruption fonctionner. Pour cela j'ai enregistrer l'interruption, j'ai crée la fonciton qui handle et j'ai lancer avec de alt_printf pour debug. j'ai remarquer que je rentré une seul fois dans mon interruption. En regardant la documentation sur les timer j'ai decider d'abord de check le registre CONTROL et STATUS et j'ai remarque en fin d'interruption que le bit TO du registre STATUS ne repasser pas a 0. Apres avoir corriger je rentré bien dans l'interruption toute les 1s. Finalement j'ai implementer le compteur dans l'interruption qui se trouve dans le fichier main.c.
+Dans cette partie j'ai ajouté un timer dans mon design qsys, que j'ai réglé avec une période de 1s. J'ai d'abord test uniquement si l'interruption fonctionner. Pour cela, j'ai enregistré l'interruption, j'ai créé la fonction timer_interrupt(), qui gère l'interruption et j'ai lancé l'exécution avec des alt_printf afin de debug . J'ai remarqué que je rentrais une seule fois dans timer_interrupt(). En regardant la documentation sur les timer, j'ai décidé d'abord de check le registre CONTROL et STATUS et j'ai remarqué en fin de timer_interrupt() que le bit TO du registre ne repasser pas à 0. Après avoir corrigé, je rentrais bien dans l'interruption toute les 1s. finalement j'ai implémenté le compteur dans l'interruption qui se trouve dans le fichier main.c.
 
 https://user-images.githubusercontent.com/24780090/211845285-f251671e-e3e1-4b9d-b263-c7e8c17521c6.mov
 
 
 # Conclusion
 
-J'ai réussi à terminer le lab2 sans grande difficulté et en moins de temps que le lab1. Ce deuxième tp m'a permis, d'utiliser les timer et de comprendre leur fonctionnement. Sur le premier lab j'avais perdu beaucoup de temps avec l'interruption mais pour se lab je suis directement aller voir la documentation afin de regarder si chaque registre se comporté de la bonne façon . Néanmois il ma fallu un petit temps de reflexion afin de comprendre comment realiser le branchement mais un fois l'architecutre du system dessiné cela ma grandement aidé.
+J'ai réussi à terminer le lab2 sans grande difficulté et en moins de temps que le lab1. Ce deuxième tp m'a permis, d'utiliser les timer et de comprendre leur fonctionnements. Sur le premier lab j'avais perdu beaucoup de temps avec l'interruption mais pour se lab je suis directement aller voir la documentation afin de regarder si chaque registre se comporté de la bonne façon . Néanmois il ma fallu un petit temps de reflexion afin de comprendre comment realiser le branchement mais un fois l'architecutre du system dessiné cela ma grandement aidé.
 
