@@ -27,19 +27,18 @@ Voici le système initialiser sur qsys :
 ![lab2_qsys](https://user-images.githubusercontent.com/24780090/211839872-e2330fc6-c873-4232-878d-f696c17ae4e7.jpg)
 
 
-
 # Avancement
 
 J'ai d'abord ecrit le fichier bin_to_7seg.vhd afin de realiser le traduction d'un chiffre en 7 segment. Pour la traduction j'ai simplement realiser une table de verité avec des when - else.
 
 ## Compteur polling
-J'ai ensuite réaliser les differentes étapes afin de pouvoir compiler mon system sur quartus (pin assignement ..). Sur la partie software j'ai ecrit une simple boucle for afin de pouvoir afficher les chiffres de 0 a 9 en polling sur un segment. Cette étape validé j'ai fait 3 boucle for imbriquer afin de réaliser l'affichage sur les 3 7segments. Le code se trouve dans le fichier polling.c.
+J'ai ensuite réaliser les differentes étapes afin de pouvoir compiler mon system sur quartus (creation vhd, componenents ,pin assignement ..). Sur la partie software j'ai ecrit une simple boucle for afin de pouvoir afficher les chiffres de 0 a 9 en polling sur un segment. Cette étape validé j'ai fait 3 boucle for imbriquer afin de réaliser l'affichage sur les 3 7segments. Le code se trouve dans le fichier polling.c.
 
 https://user-images.githubusercontent.com/24780090/211843099-4f6160b2-aeac-4aea-9bee-a2d28c4c9b7c.mov
 
 
 ## Compteur timer
-
+Dans cetter partie j'ai ajouté un timer dans mon design qsys que j'ai regler avec une période de 1s. J'ai d'abord test uniquement si l'interruption fonctionner. Pour cela j'ai enregistrer l'interruption, j'ai crée la fonciton qui handle et j'ai lancer avec de alt_printf pour debug. j'ai remarquer que je rentré une seul fois dans mon interruption. En regardant la documentation sur les timer j'ai decider d'abord de check le registre CONTROL et STATUS et j'ai remarque en fin d'interruption que le bit TO du registre STATUS ne repasser pas a 0. Apres avoir corriger je rentré bien dans l'interruption toute les 1s. Finalement j'ai implementer le compteur dans l'interruption qui se trouve dans le fichier main.c.
 
 
 
