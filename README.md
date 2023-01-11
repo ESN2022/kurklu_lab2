@@ -45,4 +45,5 @@ https://user-images.githubusercontent.com/24780090/211845285-f251671e-e3e1-4b9d-
 
 # Conclusion
 
-J'ai réussi à terminer le lab1 sans grande difficulté. C'est la première fois que je travaille sur une vrai cible. Ce premier tp m'a permis, de reprendre en main les diffèrent outils afin de travailler sur la partie hardware et la partie software. Le seul point où j'ai perdu du tamps lors de ce tp a était les interruptions. La syntaxe des fonctions utilisées dans le cours, me donner des warnings et ne fonctionner pas. En lisant la documentation fournit sur moddle je me suis rendu compte que ALT_ENHANCED_INTERRUPT_API_PRESENT était défini dans mon fichier system.h. J'ai donc utiliser l'autre syntaxe pour définir les interruptions ce qui a fonctionner. 
+J'ai réussi à terminer le lab2 sans grande difficulté et en moins de temps que le lab1. Ce deuxième tp m'a permis, d'utiliser les timer et de comprendre leur fonctionnement. Sur le premier lab j'avais perdu beaucoup de temps avec l'interruption mais pour se lab je suis directement aller voir la documentation afin de regarder si chaque registre se comporté de la bonne façon . Néanmois il ma fallu un petit temps de reflexion afin de comprendre comment realiser le branchement mais un fois l'architecutre du system dessiné cela ma grandement aidé.
+
