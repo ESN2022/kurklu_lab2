@@ -32,24 +32,15 @@ Voici le système initialiser sur qsys :
 
 J'ai d'abord ecrit le fichier bin_to_7seg.vhd afin de realiser le traduction d'un chiffre en 7 segment. Pour la traduction j'ai simplement realiser une table de verité avec des when - else.
 
-J'ai ensuite réaliser les differentes étapes afin de pouvoir compiler mon system sur quartus (pin assignement ..). Sur la partie software j'ai ecrit une simple boucle for afin de pouvoir afficher les chiffres de 0 a 9 en polling sur un segment. Cette étape validé j'ai fait 3 boucle for imbriquer afin de réaliser l'affichage sur les 3 segments. Le code se trouve dans le fichier polling.c.
+## Compteur polling
+J'ai ensuite réaliser les differentes étapes afin de pouvoir compiler mon system sur quartus (pin assignement ..). Sur la partie software j'ai ecrit une simple boucle for afin de pouvoir afficher les chiffres de 0 a 9 en polling sur un segment. Cette étape validé j'ai fait 3 boucle for imbriquer afin de réaliser l'affichage sur les 3 7segments. Le code se trouve dans le fichier polling.c.
 
-## led chaser simple
-Afin d'implémenter le led chaser j'ai tout simplement réaliser dans une boucle, des shift de bit à gauche en partant de la led0 a la led7 puis des shift à droite de led7 a led0. À chaque écriture, j'ai réalisé un temps d'arrêt a l'aide de la fonction usleep(), qui va aussi me permettre de gérer la vitesse de mon led chaser dans l'étape de polling.
-
-## led chaser polling
-Pour la version avec polling, j'ai rajouté un switch case au début de ma boucle. Ce switch case permet de regarder les switches activés et modifier ensuite la variable time utiliser par la fonction usleep(). Cela permet d'augmenter ou de diminuer le temps d'attente entre chaque écriture donc modifier la vitesse.
-
-## led chaser interruption
-Pour la version avec interruption, j'ai mis en place mes différentes fonctions pour gérer les interruptions. key_interrupt() pour les keys et sw_interrupt() pour les switches. J'ai ensuite dans mon main, initialiser mes interruptions en indiquant les mask, les edge capture et l'enregistrement des interruptions. Dans la fonction key_interrupt(), on vient regarder le bouton appuyer. En fonction de ce bouton, on lance le led_chaser ou on le réinitialise en réinitialisant aussi les variables qui permet de le gérer. 
+https://user-images.githubusercontent.com/24780090/211843099-4f6160b2-aeac-4aea-9bee-a2d28c4c9b7c.mov
 
 
-https://user-images.githubusercontent.com/24780090/211770355-d795e951-f325-4e74-9b45-989a813e43c5.mov
+## Compteur timer
 
 
-Dans la fonction sw_interrupt(), on vient d'abord lire le registre sur lequel est écrit les switches. Ensuite, je fais appel à ma fonction nombre_bits_a_1(), qui va me retourner le nombre de bit à 1 dans le registre. En fonction de ce nombre, je vais venir modifier ma variable time, afin de modifier la vitesse de mon led chaser.
-
-https://user-images.githubusercontent.com/24780090/211770309-9cf0fed9-7302-426b-9a08-b7b0f3c441d1.mov
 
 
 # Conclusion
