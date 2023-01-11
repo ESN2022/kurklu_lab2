@@ -40,6 +40,7 @@ https://user-images.githubusercontent.com/24780090/211843099-4f6160b2-aeac-4aea-
 ## Compteur timer
 Dans cetter partie j'ai ajouté un timer dans mon design qsys que j'ai regler avec une période de 1s. J'ai d'abord test uniquement si l'interruption fonctionner. Pour cela j'ai enregistrer l'interruption, j'ai crée la fonciton qui handle et j'ai lancer avec de alt_printf pour debug. j'ai remarquer que je rentré une seul fois dans mon interruption. En regardant la documentation sur les timer j'ai decider d'abord de check le registre CONTROL et STATUS et j'ai remarque en fin d'interruption que le bit TO du registre STATUS ne repasser pas a 0. Apres avoir corriger je rentré bien dans l'interruption toute les 1s. Finalement j'ai implementer le compteur dans l'interruption qui se trouve dans le fichier main.c.
 
+https://user-images.githubusercontent.com/24780090/211845285-f251671e-e3e1-4b9d-b263-c7e8c17521c6.mov
 
 
 # Conclusion
