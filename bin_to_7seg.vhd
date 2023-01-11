@@ -14,7 +14,7 @@ architecture rit of bin_to_7seg is
 begin
 
 	output <=	"1000000" when input = "0000" else 
-					"1111001" when input = "1001" else 
+					"1111001" when input = "0001" else 
 					"0100100" when input = "0010" else 
 					"0110000" when input = "0011" else 
 					"0011001" when input = "0100" else 
