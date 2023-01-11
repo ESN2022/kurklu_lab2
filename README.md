@@ -20,20 +20,19 @@ Par la suite, j'ai ajouté les PIO afin de pouvoir gérer mes I/O :
 * PIO sur 4 bits pour le segment1
 * PIO sur 4 bits pour le segment2
 * PIO sur 4 bits pour le segment3
-* Un timer
+* Un TIMER
 
 Voici le système initialiser sur qsys :
 
 ![lab2_qsys](https://user-images.githubusercontent.com/24780090/211839872-e2330fc6-c873-4232-878d-f696c17ae4e7.jpg)
 
 
-J'ai ensuite créé mon fichier kurklu_lab1.vdh, réaliser le pin assignement compiler mon system sur quartus pour pouvoir passer à la partie software.
-
-Mon objectif est de pouvoir réaliser le led chaser sur les leds. Activer et désactiver le led chaser a l'aide des interruptions sur les boutons et enfin gérer la vitesse avec des interruptions sur les switches. 
 
 # Avancement
 
-J'ai créé 3 fichier C led_chaser.c, led_chaser_polling.c et led_chaser_interrupt.c pour les différentes versions.
+J'ai d'abord ecrit le fichier bin_to_7seg.vhd afin de realiser le traduction d'un chiffre en 7 segment. Pour la traduction j'ai simplement realiser une table de verité avec des when - else.
+
+J'ai ensuite réaliser les differentes étapes afin de pouvoir compiler mon system sur quartus (pin assignement ..). Sur la partie software j'ai ecrit une simple boucle for afin de pouvoir afficher les chiffres de 0 a 9 en polling sur un segment. Cette étape validé j'ai fait 3 boucle for imbriquer afin de réaliser l'affichage sur les 3 segments. Le code se trouve dans le fichier polling.c.
 
 ## led chaser simple
 Afin d'implémenter le led chaser j'ai tout simplement réaliser dans une boucle, des shift de bit à gauche en partant de la led0 a la led7 puis des shift à droite de led7 a led0. À chaque écriture, j'ai réalisé un temps d'arrêt a l'aide de la fonction usleep(), qui va aussi me permettre de gérer la vitesse de mon led chaser dans l'étape de polling.
