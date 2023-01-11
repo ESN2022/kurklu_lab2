@@ -45,5 +45,5 @@ https://user-images.githubusercontent.com/24780090/211845285-f251671e-e3e1-4b9d-
 
 # Conclusion
 
-J'ai réussi à terminer le lab2 sans grande difficulté et en moins de temps que le lab1. Ce deuxième tp m'a permis, d'utiliser les timer et de comprendre leur fonctionnements. Sur le premier lab j'avais perdu beaucoup de temps avec l'interruption mais pour se lab je suis directement aller voir la documentation afin de regarder si chaque registre se comporté de la bonne façon . Néanmois il ma fallu un petit temps de reflexion afin de comprendre comment realiser le branchement mais un fois l'architecutre du system dessiné cela ma grandement aidé.
+J'ai réussi à terminer le lab2 sans grande difficulté et en moins de temps que le lab1. Ce deuxième tp m'a permis, d'utiliser les timer et de comprendre leurs fonctionnements. Sur le premier lab, j'avais perdu beaucoup de temps avec l'interruption. Pour se lab je suis directement allé voir la documentation afin de regarder, si tous les registres se comporter de la bonne façon. Néanmoins, en début de tp, il m'a fallu un petit temps de réflexion afin de comprendre comment réaliser le branchement, mais une fois l'architecture du system dessiné cela ma grandement aidé.
 
