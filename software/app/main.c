@@ -10,12 +10,19 @@
 int main(){
 	
 	int i =0;
+	int j = 0;
+	int k = 0;
 	while(1){
 		for(i=0;i<10;i++){
-			IOWR_ALTERA_AVALON_PIO_DATA(SEG1_BASE,i);
-			usleep(400000);
+			IOWR_ALTERA_AVALON_PIO_DATA(SEG3_BASE,i);
+			for(j=0;j<10;j++){
+				IOWR_ALTERA_AVALON_PIO_DATA(SEG2_BASE,j);
+				for(k=0;k<10;k++){
+					IOWR_ALTERA_AVALON_PIO_DATA(SEG1_BASE,k);
+					usleep(400000);
+				}
+			}
 		}
-		i = 0;
 	}
 }
 

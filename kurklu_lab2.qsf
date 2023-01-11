@@ -76,7 +76,7 @@ set_location_assignment PIN_C22 -to segment3[5]
 set_location_assignment PIN_B22 -to segment3[6]
 
 set_location_assignment PIN_P11 -to clk
-set_location_assignment PIN_P20 -to reset_n
+set_location_assignment PIN_B8 -to reset_n
 
 set_global_assignment -name ENABLE_OCT_DONE ON
 set_global_assignment -name EXTERNAL_FLASH_FALLBACK_ADDRESS 00000000
