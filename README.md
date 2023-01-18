@@ -2,7 +2,7 @@
 
 
 # Introduction
-Dans le cadre de notre cours de conception conjointe en GE5A a Polyteh Clermont, nous sommes amenées à mettre en pratique les connaissances théoriques acquises lors de TP. Ces travaux sont réalisés sur une carte Terasic DE10 - Lite basé sur un FPGA Altera MAX 10. Pour ce deuxième projet notre objectif et d'implémenter un compteur sur trois 7 segments. Le compteur devra afficher une nouvelle valeur toutes les 1s, cela doit être réaliser en utilisant une interruption sur un timer.
+Dans le cadre de notre cours de conception conjointe en GE5A a Polyteh Clermont, nous sommes amenées à mettre en pratique les connaissances théoriques acquises lors de TP. Ses travaux sont réalisés sur une carte Terasic DE10 - Lite basé sur un FPGA Altera MAX 10. Pour ce deuxième projet notre objectif et d'implémenter un compteur sur trois 7 segments. Le compteur devra afficher une nouvelle valeur toutes les 1s, cela doit être réaliser en utilisant une interruption sur un timer.
 
 
 # Architecture
